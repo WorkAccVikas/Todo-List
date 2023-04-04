@@ -15,9 +15,7 @@ window.addEventListener("load", () => {
     e.preventDefault();
 
     let currDateTime = currentDateAndTime();
-    console.log(e.target.elements.category.value);
     if (e.target.elements.category.value === "") {
-      console.log("Empty");
       Swal.fire({
         title: "Please select category..",
         icon: "error",
@@ -27,8 +25,6 @@ window.addEventListener("load", () => {
         // displayTodos;
       });
     } else {
-      console.log("Not");
-
       const todoObj = {
         content: e.target.elements.content.value,
         category: e.target.elements.category.value,
