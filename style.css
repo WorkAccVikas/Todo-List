@@ -199,6 +199,8 @@ input:checked ~ .bubble::after {
 .time-container {
   display: flex;
   justify-content: space-between;
+  border-top: 1px solid red;
+  padding-top: 0.5rem;
 }
 
 .time {

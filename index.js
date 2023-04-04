@@ -15,23 +15,38 @@ window.addEventListener("load", () => {
     e.preventDefault();
 
     let currDateTime = currentDateAndTime();
-    const todoObj = {
-      content: e.target.elements.content.value,
-      category: e.target.elements.category.value,
-      done: false,
-      createdAt: new Date().getTime(),
-      createdDateTime: currDateTime,
-      updatedDateTime: currDateTime,
-    };
+    console.log(e.target.elements.category.value);
+    if (e.target.elements.category.value === "") {
+      console.log("Empty");
+      Swal.fire({
+        title: "Please select category..",
+        icon: "error",
+        confirmButtonText: "OK",
+        allowOutsideClick: false,
+      }).then(() => {
+        // displayTodos;
+      });
+    } else {
+      console.log("Not");
 
-    todos.push(todoObj);
+      const todoObj = {
+        content: e.target.elements.content.value,
+        category: e.target.elements.category.value,
+        done: false,
+        createdAt: new Date().getTime(),
+        createdDateTime: currDateTime,
+        updatedDateTime: currDateTime,
+      };
 
-    localStorage.setItem("todos", JSON.stringify(todos));
+      todos.push(todoObj);
 
-    // * : it will reset form
-    e.target.reset();
+      localStorage.setItem("todos", JSON.stringify(todos));
 
-    displayTodos();
+      // * : it will reset form
+      e.target.reset();
+
+      displayTodos();
+    }
   });
   displayTodos();
 });
